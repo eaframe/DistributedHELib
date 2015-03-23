@@ -1,0 +1,6 @@
+*.o
+Test_DistributedHELib/Test_DistributedHELib_master
+Test_DistributedHELib/Test_DistributedHELib_modified
+Test_DistributedHELib/out_*
+HElib-master/src/Test*
+HElib-modified/src/Test*
