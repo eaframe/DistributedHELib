@@ -24,6 +24,7 @@
  */
 #include "DoubleCRT.h"
 #include "timing.h"
+#include "Distributed.h"
 
 #if (ALT_CRT)
 #warning "Polynomial Arithmetic Implementation in AltCRT.cpp"
@@ -100,15 +101,19 @@ DoubleCRT& DoubleCRT::Op(const DoubleCRT &other, Fun fun,
   long phim = context.zMStar.getPhiM();
 
 	FHE_TIMER_START;
-  // add/sub/mul the data, element by element, modulo the respective primes
-  for (long i = s.first(); i <= s.last(); i = s.next(i)) {
-    long pi = context.ithPrime(i);
-    vec_long& row = map[i];
-    const vec_long& other_row = (*other_map)[i];
-    
-    for (long j = 0; j < phim; j++)
-      row[j] = fun.apply(row[j], other_row[j], pi);
-  }
+
+	for(long i = s.first(); i <= s.last(); i = s.next(i)) {
+		int operation;
+		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+			operation = OP_ADD_TWO_VECTS;
+		} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+			operation = OP_SUB_TWO_VECTS;
+		} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+			operation = OP_MUL_TWO_VECTS;
+		}
+		
+		DistributeValuesTwoVectors(operation, context.ithPrime(i), phim, map[i]._vec__rep.rep, (*other_map)[i]._vec__rep.rep);
+	}
 
 	FHE_TIMER_STOP;
   return *this;
@@ -135,13 +140,27 @@ DoubleCRT& DoubleCRT::Op(const ZZ &num, Fun fun)
   long phim = context.zMStar.getPhiM();
   
 	FHE_TIMER_START;
-  for (long i = s.first(); i <= s.last(); i = s.next(i)) {
-    long pi = context.ithPrime(i);
-    long n = rem(num, pi);  // n = num % pi
-    vec_long& row = map[i];
-    for (long j = 0; j < phim; j++)
-      row[j] = fun.apply(row[j], n, pi);
-  }
+	for(long i = s.first(); i <= s.last(); i = s.next(i)) {
+		int operation;
+		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+			operation = OP_ADD_ONE_VECT_ONE_NUM;
+		} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+			operation = OP_SUB_ONE_VECT_ONE_NUM;
+		} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+			operation = OP_MUL_ONE_VECT_ONE_NUM;
+		}
+		
+		long pi = context.ithPrime(i);
+		DistributeValuesOneVectorOneNum(operation, pi, phim, map[i]._vec__rep.rep, rem(num, pi));
+	}
+	
+//  for (long i = s.first(); i <= s.last(); i = s.next(i)) {
+//    long pi = context.ithPrime(i);
+//    long n = rem(num, pi);  // n = num % pi
+//    vec_long& row = map[i];
+//    for (long j = 0; j < phim; j++)
+//      row[j] = fun.apply(row[j], n, pi);
+//  }
 	FHE_TIMER_STOP;
   return *this;
 }

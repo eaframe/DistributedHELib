@@ -14,6 +14,7 @@
 # 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 # 
 CC = g++
+MPICC = mpic++
 #
 CFLAGS = -g -O2 -Wfatal-errors -Wshadow -Wall -I/usr/local/include 
 
@@ -43,7 +44,7 @@ LD = g++
 AR = ar
 ARFLAGS=ruv
 GMP=-lgmp 
-LDLIBS = -L/usr/local/lib -lntl $(GMP) -lm
+LDLIBS = -L/usr/local/lib -lntl $(GMP) -lm -lmpi
 
 HEADER = EncryptedArray.h FHE.h Ctxt.h CModulus.h FHEContext.h PAlgebra.h DoubleCRT.h NumbTh.h bluestein.h IndexSet.h timing.h IndexMap.h replicate.h hypercube.h matching.h powerful.h permutations.h polyEval.h Distributed.h
 
@@ -80,7 +81,7 @@ DoubleCRT.o: DoubleCRT.cpp AltCRT.cpp $(HEADER)
 	$(CC) $(CFLAGS) -c DoubleCRT.cpp
 	
 Distributed.o: Distributed.cpp $(HEADER)
-	mpic++ $(CFLAGS) -c Distributed.cpp
+	$(MPICC) $(CFLAGS) -c Distributed.cpp
 
 %.o: %.cpp $(HEADER)
 	$(CC) $(CFLAGS) -c $<
@@ -89,7 +90,7 @@ fhe.a: $(OBJ)
 	$(AR) $(ARFLAGS) fhe.a $(OBJ)
 
 ./%_x: %.cpp fhe.a
-	$(CC) $(CFLAGS) -o $@ $< fhe.a $(LDLIBS)
+	$(MPICC) $(CFLAGS) -o $@ $< fhe.a $(LDLIBS)
 
 clean:
 	rm -f *.o *_x *_x.exe *.a core.*

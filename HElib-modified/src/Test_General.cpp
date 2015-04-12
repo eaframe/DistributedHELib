@@ -21,6 +21,7 @@
 #include "timing.h"
 #include "EncryptedArray.h"
 #include <NTL/lzz_pXFactoring.h>
+#include "Distributed.h"
 
 #include <cassert>
 #include <cstdio>
@@ -276,6 +277,8 @@ void  TestIt(long R, long p, long r, long d, long c, long k, long w,
 int main(int argc, char **argv) 
 {
   setTimersOn();
+  
+  Startup(argc, argv);
 
   ArgMapping amap;
 
@@ -344,6 +347,8 @@ int main(int argc, char **argv)
   for (long repeat_cnt = 0; repeat_cnt < repeat; repeat_cnt++) {
     TestIt(R, p, r, d, c, k, w, L, m, gens, ords);
   }
+  
+  Shutdown();
 }
 
 // call to get our running test case:
