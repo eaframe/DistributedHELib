@@ -2,9 +2,12 @@
 #include <mpi.h>
 #include <iostream>
 #include <stdlib.h>
+#include <queue>
 
 int my_rank;
 int numprocs;
+
+queue<MPI::Request> request_queue;
 
 long *vector_1 = NULL;
 long vector_1_length = 0;
@@ -104,6 +107,17 @@ void Startup(int argc, char **argv) {
 //	cout << "MASTER HERE, CONTINUING" << endl;
 }
 
+void sync() {
+	while(!request_queue.empty()) {
+		MPI::Request request = request_queue.front();
+		request_queue.pop();
+		
+		if(!request.Test()) {
+			request_queue.push(request);
+		}
+	}
+}
+
 int next_dest = 1;
 
 int get_next_dest() {
@@ -113,12 +127,12 @@ int get_next_dest() {
 
 void DistributeValue(long value, int dest) {
 //	cout << "Process " << my_rank << " distributing value to " << dest << endl;
-	MPI::COMM_WORLD.Isend(&value, sizeof(long), MPI::BYTE, dest, 0);
+	request_queue.push(MPI::COMM_WORLD.Isend(&value, sizeof(long), MPI::BYTE, dest, 0));
 }
 
 void DistributeVector(long *vector, long row_length, int dest) {
 //	cout << "Process " << my_rank << " distributing row to " << dest << endl;
-	MPI::COMM_WORLD.Isend(vector, sizeof(long) * row_length, MPI::BYTE, dest, 0);
+	request_queue.push(MPI::COMM_WORLD.Isend(vector, sizeof(long) * row_length, MPI::BYTE, dest, 0));
 }
 
 void DistributeValuesTwoVectors(int operation, long ithPrime, long row_length, long *row, long *other_row) {
@@ -132,8 +146,8 @@ void DistributeValuesTwoVectors(int operation, long ithPrime, long row_length, l
 	DistributeVector(row, row_length, dest);
 	DistributeVector(other_row, row_length, dest);
 	
-	// WILL WANT IRECV AND SYNC FUNCTION
-	MPI::COMM_WORLD.Recv(row, sizeof(long) * row_length, MPI::BYTE, dest, 0);
+	request_queue.push(MPI::COMM_WORLD.Irecv(row, sizeof(long) * row_length, MPI::BYTE, dest, 0));
+	sync();
 }
 
 void DistributeValuesOneVectorOneNum(int operation, long ithPrime, long row_length, long *row, long num) {
@@ -148,7 +162,8 @@ void DistributeValuesOneVectorOneNum(int operation, long ithPrime, long row_leng
 	DistributeVector(row, row_length, dest);
 	
 	// WILL WANT IRECV AND SYNC FUNCTION
-	MPI::COMM_WORLD.Recv(row, sizeof(long) * row_length, MPI::BYTE, dest, 0);
+	request_queue.push(MPI::COMM_WORLD.Irecv(row, sizeof(long) * row_length, MPI::BYTE, dest, 0));
+	sync();
 }
 
 void Shutdown() {
