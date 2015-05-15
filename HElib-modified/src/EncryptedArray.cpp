@@ -54,7 +54,7 @@ EncryptedArrayDerived<type>::EncryptedArrayDerived(
 template<class type>
 void EncryptedArrayDerived<type>::rotate1D(Ctxt& ctxt, long i, long amt, bool dc) const
 {
-  FHE_TIMER_START;
+  
   const PAlgebra& al = context.zMStar;
 
   const vector< vector< RX > >& maskTable = tab.getMaskTable();
@@ -101,7 +101,7 @@ void EncryptedArrayDerived<type>::rotate1D(Ctxt& ctxt, long i, long amt, bool dc
     tmp.smartAutomorph(ival);  // shift right by ord-val
     ctxt += tmp;               // combine the two parts
   }
-  FHE_TIMER_STOP;
+  
 }
 
 // Shift k positions along the i'th dimension with zero fill.
@@ -109,7 +109,7 @@ void EncryptedArrayDerived<type>::rotate1D(Ctxt& ctxt, long i, long amt, bool dc
 template<class type>
 void EncryptedArrayDerived<type>::shift1D(Ctxt& ctxt, long i, long k) const
 {
-  FHE_TIMER_START;
+  
   const PAlgebra& al = context.zMStar;
 
   const vector< vector< RX > >& maskTable = tab.getMaskTable();
@@ -143,7 +143,7 @@ void EncryptedArrayDerived<type>::shift1D(Ctxt& ctxt, long i, long k) const
   DoubleCRT m1(conv<ZZX>(mask), context, ctxt.getPrimeSet());
   ctxt.multByConstant(m1);   // zero out slots where mask=0
   ctxt.smartAutomorph(val);  // shift left by val
-  FHE_TIMER_STOP;
+  
 }
 
 
@@ -154,7 +154,7 @@ void EncryptedArrayDerived<type>::shift1D(Ctxt& ctxt, long i, long k) const
 template<class type>
 void EncryptedArrayDerived<type>::rotate(Ctxt& ctxt, long amt) const
 {
-  FHE_TIMER_START;
+  
 
   const PAlgebra& al = context.zMStar;
 
@@ -232,13 +232,13 @@ void EncryptedArrayDerived<type>::rotate(Ctxt& ctxt, long amt) const
              + maskTable[i][v+1];  // update the mask for next iteration
     }
   }
-  FHE_TIMER_STOP;
+  
 }
 
 template<class type>
 void EncryptedArrayDerived<type>::shift(Ctxt& ctxt, long k) const
 {
-  FHE_TIMER_START;
+  
 
 
   const PAlgebra& al = context.zMStar;
@@ -298,7 +298,7 @@ void EncryptedArrayDerived<type>::shift(Ctxt& ctxt, long k) const
       ctxt += tmp;
     } 
   }
-  FHE_TIMER_STOP;
+  
 }
 
 
@@ -578,7 +578,7 @@ struct MatMulDimComp {
 template<class type>
 void EncryptedArrayDerived<type>::mat_mul_dense(Ctxt& ctxt, const PlaintextMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   assert(this == &mat.getEA().getDerived(type()));
   assert(&context == &ctxt.getContext());
 
@@ -615,7 +615,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat_dense(CachedPtxtMatrix& cmat,
                                const PlaintextMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   NTL::Error("cached compMat_dense not implemented yet");
 }
 
@@ -623,7 +623,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat_dense(CachedDCRTPtxtMatrix& cmat,
                                 const PlaintextMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   CachedPtxtMatrix zzxMat;
   compMat_dense(zzxMat, mat);
   long n = zzxMat.length();
@@ -637,7 +637,7 @@ template<class CachedMatrix>
 static void mat_mul_dense_tmpl(Ctxt& ctxt, const CachedMatrix& cmat,
 			       const EncryptedArray& ea)
 {
-  FHE_TIMER_START;
+  
   NTL::Error("cached mat_mul_dense not implemented yet");
 }
 void mat_mul_dense(Ctxt& ctxt, const CachedPtxtMatrix& cmat,
@@ -657,7 +657,7 @@ void mat_mul_dense(Ctxt& ctxt, const CachedDCRTPtxtMatrix& cmat,
 template<class type>
 void EncryptedArrayDerived<type>::mat_mul(Ctxt& ctxt, const PlaintextMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   assert(this == &mat.getEA().getDerived(type()));
   assert(&context == &ctxt.getContext());
 
@@ -725,7 +725,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat(CachedPtxtMatrix& cmat,
                           const PlaintextMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   assert(this == &mat.getEA().getDerived(type()));
 
   RBak bak; bak.save(); tab.restoreContext();
@@ -782,7 +782,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat(CachedDCRTPtxtMatrix& cmat,
                           const PlaintextMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   CachedPtxtMatrix zzxMat;
   compMat(zzxMat, mat);
   long n = zzxMat.length();
@@ -796,7 +796,7 @@ template<class CachedMatrix>
 void mat_mul_tmpl(Ctxt& ctxt, const CachedMatrix& cmat,
 		  const EncryptedArray& ea)
 {
-  FHE_TIMER_START;
+  
   ctxt.cleanUp(); // not sure, but this may be a good idea
   Ctxt res(ctxt.getPubKey(), ctxt.getPtxtSpace()); // fresh encryption of zero
 
@@ -881,7 +881,7 @@ template<class type>
 void EncryptedArrayDerived<type>::mat_mul1D(Ctxt& ctxt,
      const PlaintextMatrixBaseInterface& mat, long dim) const
 {
-  FHE_TIMER_START;
+  
   const PAlgebra& zMStar = context.zMStar;
 
   assert(this == &mat.getEA().getDerived(type()));
@@ -928,7 +928,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat1D(CachedPtxtMatrix& cmat,
                  const PlaintextMatrixBaseInterface& mat, long dim) const
 {
-  FHE_TIMER_START;
+  
   const PAlgebra& zMStar = context.zMStar;
 
   assert(this == &mat.getEA().getDerived(type()));
@@ -967,7 +967,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat1D(CachedDCRTPtxtMatrix& cmat,
                      const PlaintextMatrixBaseInterface& mat, long dim) const
 {
-  FHE_TIMER_START;
+  
   CachedPtxtMatrix zzxMat;
   compMat1D(zzxMat, mat, dim);
   long n = zzxMat.length();
@@ -981,7 +981,7 @@ template<class Matrix>
 static void mat_mul1D_tmpl(Ctxt& ctxt, const Matrix& cmat, long dim,
 			   const EncryptedArray& ea)
 {
-  FHE_TIMER_START;
+  
   const FHEcontext& context = ctxt.getContext();
   const PAlgebra& zMStar = context.zMStar;
   assert(dim >= 0 && dim <= LONG(zMStar.numOfGens()));
@@ -1019,7 +1019,7 @@ void mat_mul1D(Ctxt& ctxt, const CachedDCRTPtxtMatrix& cmat, long dim,
 template<class type>
 void EncryptedArrayDerived<type>::mat_mul(Ctxt& ctxt, const PlaintextBlockMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   assert(this == &mat.getEA().getDerived(type()));
   assert(&context == &ctxt.getContext());
 
@@ -1138,7 +1138,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat(CachedPtxtBlockMatrix& cmat,
 			  const PlaintextBlockMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   assert(this == &mat.getEA().getDerived(type()));
   const PAlgebra& zMStar = context.zMStar;
   long p = zMStar.getP(); 
@@ -1232,7 +1232,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat(CachedDCRTPtxtBlockMatrix& cmat,
                           const PlaintextBlockMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   CachedPtxtBlockMatrix zzxMat;
   compMat(zzxMat, mat);
   long m = zzxMat.NumRows();
@@ -1248,7 +1248,7 @@ template<class CachedMatrix>
 void blockMat_mul_tmpl(Ctxt& ctxt, const CachedMatrix& cmat,
 		       const EncryptedArray& ea)
 {
-  FHE_TIMER_START;
+  
   ctxt.cleanUp(); // not sure, but this may be a good idea
 
   long nslots = ea.size();
@@ -1302,7 +1302,7 @@ void mat_mul(Ctxt& ctxt, const CachedDCRTPtxtBlockMatrix& cmat,
 template<class type> void EncryptedArrayDerived<type>::mat_mul1D(Ctxt& ctxt,
                const PlaintextBlockMatrixBaseInterface& mat, long dim) const
 {
-  FHE_TIMER_START;
+  
   const PAlgebra& zMStar = context.zMStar;
 
   assert(this == &mat.getEA().getDerived(type()));
@@ -1466,7 +1466,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat1D(CachedPtxtBlockMatrix& cmat,
                  const PlaintextBlockMatrixBaseInterface& mat, long dim) const
 {
-  FHE_TIMER_START;
+  
   const PAlgebra& zMStar = context.zMStar;
 
   assert(this == &mat.getEA().getDerived(type()));
@@ -1603,7 +1603,7 @@ template<class type>
 void EncryptedArrayDerived<type>::compMat1D(CachedDCRTPtxtBlockMatrix& cmat,
               const PlaintextBlockMatrixBaseInterface& mat, long dim) const
 {
-  FHE_TIMER_START;
+  
   CachedPtxtBlockMatrix zzxMat;
   compMat1D(zzxMat, mat, dim);
   long m = zzxMat.NumRows();
@@ -1618,7 +1618,7 @@ template<class Matrix>
 static void blockMat_mul1D_tmpl(Ctxt& ctxt, const Matrix& cmat, long dim,
 				const EncryptedArray& ea)
 {
-  FHE_TIMER_START;
+  
   const FHEcontext& context = ctxt.getContext();
   const PAlgebra& zMStar = context.zMStar;
   assert(dim >= 0 && dim <=  LONG(zMStar.numOfGens()));
@@ -1715,14 +1715,12 @@ template<class type> void
 EncryptedArrayDerived<type>::buildLinPolyCoeffs(vector<RX>& C, 
 						const vector<RX>& L) const
 {
-  FHE_TIMER_START;
+  
 
   RBak bak; bak.save(); restoreContext();
   REBak ebak; ebak.save(); restoreContextForG();
 
   if (!linPolyMatrix) {
-    FHE_NTIMER_START(buildLinPolyCoeffs_buildMatrix);
-
     long p = tab.getZMStar().getP();
     long r = tab.getR();
 
@@ -1811,7 +1809,7 @@ void applyLinPolyLL(const EncryptedArray& ea,
 template<class type>
 void EncryptedArrayDerived<type>::mat_mul(Ctxt& ctxt, const PlaintextBlockMatrixBaseInterface& mat) const
 {
-  FHE_TIMER_START;
+  
   assert(this == &mat.getEA().getDerived(type()));
   assert(&context == &ctxt.getContext());
 

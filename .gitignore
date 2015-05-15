@@ -1,6 +1,5 @@
 *.o
-Test_DistributedHELib/Test_DistributedHELib_master
-Test_DistributedHELib/Test_DistributedHELib_modified
-Test_DistributedHELib/out_*
+Test_DistributedHELib/Test_DistributedHE_HELib_master
+Test_DistributedHELib/Test_DistributedHE_HELib_modified
 HElib-master/src/Test*
 HElib-modified/src/Test*

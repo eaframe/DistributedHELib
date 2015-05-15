@@ -38,7 +38,7 @@
 
 #include "NumbTh.h"
 #include <ctime>
-
+#include <time.h>
 
 
 //! A simple class to toggle timing information on and off
@@ -47,7 +47,7 @@ public:
   const char *name;
   const char *loc;
   bool isOn;  // a broken semaphore
-  std::clock_t counter;
+  unsigned long counter;
   long numCalls;
 
   FHEtimer(const char *_name, const char *_loc) :

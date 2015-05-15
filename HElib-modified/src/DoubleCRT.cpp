@@ -100,7 +100,17 @@ DoubleCRT& DoubleCRT::Op(const DoubleCRT &other, Fun fun,
   const IndexSet& s = map.getIndexSet();
   long phim = context.zMStar.getPhiM();
 
-	FHE_TIMER_START;
+	static FHEtimer *vecsTimer = 0;
+	
+	if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+		buildTimer(vecsTimer, "AddVecs", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+		buildTimer(vecsTimer, "SubVecs", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+		buildTimer(vecsTimer, "MulVecs", FHE_AT);
+	}
+	
+  	auto_timer vecsAutoTimer(vecsTimer);
 
 	for(long i = s.first(); i <= s.last(); i = s.next(i)) {
 		int operation;
@@ -112,10 +122,24 @@ DoubleCRT& DoubleCRT::Op(const DoubleCRT &other, Fun fun,
 			operation = OP_MUL_TWO_VECTS;
 		}
 		
+		static FHEtimer *vecsDistributeValuesTimer = 0;
+	
+		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+			buildTimer(vecsDistributeValuesTimer, "AddVecsDistributeValues", FHE_AT);
+		} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+			buildTimer(vecsDistributeValuesTimer, "SubVecsDistributeValues", FHE_AT);
+		} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+			buildTimer(vecsDistributeValuesTimer, "MulVecsDistributeValues", FHE_AT);
+		}
+	
+	  	auto_timer vecsDistributeValuesAutoTimer(vecsDistributeValuesTimer);
+		
 		DistributeValuesTwoVectors(operation, context.ithPrime(i), phim, map[i]._vec__rep.rep, (*other_map)[i]._vec__rep.rep);
+		
+		vecsDistributeValuesAutoTimer.stop();
 	}
 
-	FHE_TIMER_STOP;
+	vecsAutoTimer.stop();
   return *this;
 }
 
@@ -139,7 +163,18 @@ DoubleCRT& DoubleCRT::Op(const ZZ &num, Fun fun)
   const IndexSet& s = map.getIndexSet();
   long phim = context.zMStar.getPhiM();
   
-	FHE_TIMER_START;
+	static FHEtimer *vecsTimer = 0;
+	
+	if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+		buildTimer(vecsTimer, "AddVecNum", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+		buildTimer(vecsTimer, "SubVecNum", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+		buildTimer(vecsTimer, "MulVecNum", FHE_AT);
+	}
+	
+  	auto_timer vecsAutoTimer(vecsTimer);
+  	
 	for(long i = s.first(); i <= s.last(); i = s.next(i)) {
 		int operation;
 		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
@@ -151,17 +186,25 @@ DoubleCRT& DoubleCRT::Op(const ZZ &num, Fun fun)
 		}
 		
 		long pi = context.ithPrime(i);
+		
+		static FHEtimer *vecsDistributeValuesTimer = 0;
+	
+		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+			buildTimer(vecsDistributeValuesTimer, "AddVecNumDistributeValues", FHE_AT);
+		} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+			buildTimer(vecsDistributeValuesTimer, "SubVecNumDistributeValues", FHE_AT);
+		} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+			buildTimer(vecsDistributeValuesTimer, "MulVecNumDistributeValues", FHE_AT);
+		}
+	
+	  	auto_timer vecsDistributeValuesAutoTimer(vecsDistributeValuesTimer);
+		
 		DistributeValuesOneVectorOneNum(operation, pi, phim, map[i]._vec__rep.rep, rem(num, pi));
+		
+		vecsDistributeValuesAutoTimer.stop();
 	}
 	
-//  for (long i = s.first(); i <= s.last(); i = s.next(i)) {
-//    long pi = context.ithPrime(i);
-//    long n = rem(num, pi);  // n = num % pi
-//    vec_long& row = map[i];
-//    for (long j = 0; j < phim; j++)
-//      row[j] = fun.apply(row[j], n, pi);
-//  }
-	FHE_TIMER_STOP;
+	vecsAutoTimer.stop();
   return *this;
 }
 
@@ -219,7 +262,7 @@ DoubleCRT& DoubleCRT::Op<DoubleCRT::SubFun>(const ZZX &poly, SubFun fun);
 // break *this into n digits,according to the primeSets in context.digits
 void DoubleCRT::breakIntoDigits(vector<DoubleCRT>& digits, long n) const
 {
-  FHE_TIMER_START;
+  
   IndexSet allPrimes = getIndexSet() | context.specialPrimes;
   assert(n <= (long)context.digits.size());
 
@@ -261,14 +304,14 @@ void DoubleCRT::breakIntoDigits(vector<DoubleCRT>& digits, long n) const
     }
   }
 #endif
-  FHE_TIMER_STOP;
+  
 }
 
 // expand index set by s1.
 // it is assumed that s1 is disjoint from the current index set.
 void DoubleCRT::addPrimes(const IndexSet& s1)
 {
-  FHE_TIMER_START;
+  
 
   if (empty(s1)) return; // nothing to do
   assert( disjoint(s1,map.getIndexSet()) ); // s1 is disjoint from *this
@@ -552,7 +595,7 @@ void DoubleCRT::toPoly(ZZX& poly, const IndexSet& s,
 
 #if 0
 {
-FHE_TIMER_START;
+
   if (dryRun) return;
 
   IndexSet s1 = map.getIndexSet() & s;
@@ -601,7 +644,7 @@ FHE_TIMER_START;
     }
 
   poly.normalize(); // need to call this after we work on the coeffs
-FHE_TIMER_STOP;
+
 }
 #endif
 

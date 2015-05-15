@@ -146,7 +146,6 @@ void Ctxt::modDownToSet(const IndexSet &s)
     exit(1);
   }
   if (intersection==primeSet) return; // nothing to do, removing no primes
-  FHE_TIMER_START;
 
   IndexSet setDiff = primeSet / intersection; // set-minus
 
@@ -180,7 +179,6 @@ void Ctxt::modDownToSet(const IndexSet &s)
   }
   primeSet.remove(setDiff); // remove the primes not in s
   assert(verifyPrimeSet()); // sanity-check: ensure primeSet is still valid
-  FHE_TIMER_STOP;
 }
 
 
@@ -248,7 +246,6 @@ void Ctxt::reLinearize(long keyID)
   // Special case: if *this is empty or already re-linearized then do nothing
   if (this->isEmpty() || this->inCanonicalForm(keyID)) return;
 
-  FHE_TIMER_START;
   this->reduce();
 
   // To relinearize, the primeSet must be disjoint from the special primes
@@ -296,7 +293,6 @@ void Ctxt::reLinearize(long keyID)
   }
 #endif
 
-  FHE_TIMER_STOP;
 }
 
 void Ctxt::cleanUp()
@@ -661,7 +657,6 @@ void Ctxt::tensorProduct(const Ctxt& c1, const Ctxt& c2)
 
 Ctxt& Ctxt::operator*=(const Ctxt& other)
 {
-  FHE_TIMER_START;
   // Special case: if *this is empty then do nothing
   if (this->isEmpty()) return  *this;
 
@@ -699,7 +694,6 @@ Ctxt& Ctxt::operator*=(const Ctxt& other)
   }
   *this = tmpCtxt; // copy the result into *this
 
-  FHE_TIMER_STOP;
   return *this;
 }
 
@@ -764,7 +758,6 @@ void Ctxt::multByConstant(const ZZ& c)
 {
   // Special case: if *this is empty then do nothing
   if (this->isEmpty()) return;
-  FHE_TIMER_START;
 
   long cc = rem(c, ptxtSpace); // reduce modulo plaintext space
   ZZ tmp = to_ZZ(cc);
@@ -782,7 +775,6 @@ void Ctxt::multByConstant(const DoubleCRT& dcrt, double size)
 {
   // Special case: if *this is empty then do nothing
   if (this->isEmpty()) return;
-  FHE_TIMER_START;
 
    // If the size is not given, we use the default value phi(m)*ptxtSpace^2/2
   if (size < 0.0) {
@@ -800,7 +792,6 @@ void Ctxt::multByConstant(const DoubleCRT& dcrt, double size)
 void Ctxt::multByConstant(const ZZX& poly, double size)
 {
   if (this->isEmpty()) return;
-  FHE_TIMER_START;
   DoubleCRT dcrt(poly,context,primeSet);
   multByConstant(dcrt,size);
 }
@@ -853,7 +844,6 @@ void Ctxt::divideByP()
 
 void Ctxt::automorph(long k) // Apply automorphism F(X)->F(X^k) (gcd(k,m)=1)
 {
-  FHE_TIMER_START;
   // Special case: if *this is empty then do nothing
   if (this->isEmpty()) return;
 
@@ -869,7 +859,6 @@ void Ctxt::automorph(long k) // Apply automorphism F(X)->F(X^k) (gcd(k,m)=1)
     }
   }
   // no change in noise variance
-  FHE_TIMER_STOP;
 }
 
 
@@ -878,7 +867,6 @@ void Ctxt::automorph(long k) // Apply automorphism F(X)->F(X^k) (gcd(k,m)=1)
 // result of every step.
 void Ctxt::smartAutomorph(long k) 
 {
-  FHE_TIMER_START;
   // Special case: if *this is empty then do nothing
   if (this->isEmpty()) return;
 
@@ -905,7 +893,6 @@ void Ctxt::smartAutomorph(long k)
 
     k = MulMod(k, InvMod(amt,m), m);
   }
-  FHE_TIMER_STOP;
 }
 
 
@@ -913,7 +900,6 @@ void Ctxt::smartAutomorph(long k)
 // applies the Frobenius automorphism p^j
 void Ctxt::frobeniusAutomorph(long j) 
 {
-  FHE_TIMER_START;
   // Special case: if *this is empty then do nothing
   if (this->isEmpty()) return;
 
@@ -924,7 +910,6 @@ void Ctxt::frobeniusAutomorph(long j)
   j = mcMod(j, d);
   long val = PowerMod(p, j, m);
   smartAutomorph(val);
-  FHE_TIMER_STOP;
 }
 
 
