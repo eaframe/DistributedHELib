@@ -138,6 +138,18 @@ void DistributeVector(long *vector, long row_length, int dest) {
 
 void DistributeValuesTwoVectors(int operation, long ithPrime, long row_length, long *row, long *other_row) {
 
+	static FHEtimer *vecsDistributeSingleValuesTimer = 0;
+	
+	if(operation == OP_ADD_TWO_VECTS) {
+		buildTimer(vecsDistributeSingleValuesTimer, "AddVecsDistributeSingleValues", FHE_AT);
+	} else if (operation == OP_SUB_TWO_VECTS) {
+		buildTimer(vecsDistributeSingleValuesTimer, "SubVecsDistributeSingleValues", FHE_AT);
+	} else if (operation == OP_MUL_TWO_VECTS) {
+		buildTimer(vecsDistributeSingleValuesTimer, "MulVecsDistributeSingleValues", FHE_AT);
+	}
+
+  	auto_timer vecsDistributeSingleValuesAutoTimer(vecsDistributeSingleValuesTimer);
+
 	static FHEtimer *vecsDistributeWorkTimer = 0;
 	
 	if(operation == OP_ADD_TWO_VECTS) {
@@ -176,25 +188,24 @@ void DistributeValuesTwoVectors(int operation, long ithPrime, long row_length, l
 	
 	vecsDistributeDataAutoTimer.stop();
 	
-	static FHEtimer *vecsDistributeResponseTimer = 0;
-	
-	if(operation == OP_ADD_TWO_VECTS) {
-		buildTimer(vecsDistributeResponseTimer, "AddVecsDistributeResponse", FHE_AT);
-	} else if (operation == OP_SUB_TWO_VECTS) {
-		buildTimer(vecsDistributeResponseTimer, "SubVecsDistributeResponse", FHE_AT);
-	} else if (operation == OP_MUL_TWO_VECTS) {
-		buildTimer(vecsDistributeResponseTimer, "MulVecsDistributeResponse", FHE_AT);
-	}
-
-  	auto_timer vecsDistributeResponseAutoTimer(vecsDistributeResponseTimer);
-	
 	request_queue.push(MPI::COMM_WORLD.Irecv(row, sizeof(long) * row_length, MPI::BYTE, dest, 0));
-	sync();
 	
-	vecsDistributeResponseAutoTimer.stop();
+	vecsDistributeSingleValuesAutoTimer.stop();
 }
 
 void DistributeValuesOneVectorOneNum(int operation, long ithPrime, long row_length, long *row, long num) {
+	
+	static FHEtimer *vecsDistributeSingleValuesTimer = 0;
+	
+	if(operation == OP_ADD_ONE_VECT_ONE_NUM) {
+		buildTimer(vecsDistributeSingleValuesTimer, "AddVecNumDistributeSingleValues", FHE_AT);
+	} else if (operation == OP_SUB_ONE_VECT_ONE_NUM) {
+		buildTimer(vecsDistributeSingleValuesTimer, "SubVecNumDistributeSingleValues", FHE_AT);
+	} else if (operation == OP_MUL_ONE_VECT_ONE_NUM) {
+		buildTimer(vecsDistributeSingleValuesTimer, "MulVecNumDistributeSingleValues", FHE_AT);
+	}
+
+  	auto_timer vecsDistributeSingleValuesAutoTimer(vecsDistributeSingleValuesTimer);
 	
 	static FHEtimer *vecsDistributeWorkTimer = 0;
 	
@@ -234,23 +245,9 @@ void DistributeValuesOneVectorOneNum(int operation, long ithPrime, long row_leng
 	
 	vecsDistributeDataAutoTimer.stop();
 	
-	static FHEtimer *vecsDistributeResponseTimer = 0;
-	
-	if(operation == OP_ADD_ONE_VECT_ONE_NUM) {
-		buildTimer(vecsDistributeResponseTimer, "AddVecNumDistributeResponse", FHE_AT);
-	} else if (operation == OP_SUB_ONE_VECT_ONE_NUM) {
-		buildTimer(vecsDistributeResponseTimer, "SubVecNumDistributeResponse", FHE_AT);
-	} else if (operation == OP_MUL_ONE_VECT_ONE_NUM) {
-		buildTimer(vecsDistributeResponseTimer, "MulVecNumDistributeResponse", FHE_AT);
-	}
-
-  	auto_timer vecsDistributeResponseAutoTimer(vecsDistributeResponseTimer);
-	
-	// WILL WANT IRECV AND SYNC FUNCTION
 	request_queue.push(MPI::COMM_WORLD.Irecv(row, sizeof(long) * row_length, MPI::BYTE, dest, 0));
-	sync();
 	
-	vecsDistributeResponseAutoTimer.stop();
+	vecsDistributeSingleValuesAutoTimer.stop();
 }
 
 void Shutdown() {

@@ -111,6 +111,18 @@ DoubleCRT& DoubleCRT::Op(const DoubleCRT &other, Fun fun,
 	}
 	
   	auto_timer vecsAutoTimer(vecsTimer);
+  	
+  	static FHEtimer *vecsDistributeValuesTimer = 0;
+	
+	if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+		buildTimer(vecsDistributeValuesTimer, "AddVecsDistributeValues", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+		buildTimer(vecsDistributeValuesTimer, "SubVecsDistributeValues", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+		buildTimer(vecsDistributeValuesTimer, "MulVecsDistributeValues", FHE_AT);
+	}
+
+  	auto_timer vecsDistributeValuesAutoTimer(vecsDistributeValuesTimer);
 
 	for(long i = s.first(); i <= s.last(); i = s.next(i)) {
 		int operation;
@@ -122,22 +134,26 @@ DoubleCRT& DoubleCRT::Op(const DoubleCRT &other, Fun fun,
 			operation = OP_MUL_TWO_VECTS;
 		}
 		
-		static FHEtimer *vecsDistributeValuesTimer = 0;
-	
-		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
-			buildTimer(vecsDistributeValuesTimer, "AddVecsDistributeValues", FHE_AT);
-		} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
-			buildTimer(vecsDistributeValuesTimer, "SubVecsDistributeValues", FHE_AT);
-		} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
-			buildTimer(vecsDistributeValuesTimer, "MulVecsDistributeValues", FHE_AT);
-		}
-	
-	  	auto_timer vecsDistributeValuesAutoTimer(vecsDistributeValuesTimer);
-		
 		DistributeValuesTwoVectors(operation, context.ithPrime(i), phim, map[i]._vec__rep.rep, (*other_map)[i]._vec__rep.rep);
-		
-		vecsDistributeValuesAutoTimer.stop();
 	}
+	
+	vecsDistributeValuesAutoTimer.stop();
+	
+	static FHEtimer *vecsDistributeSyncTimer = 0;
+	
+	if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+		buildTimer(vecsDistributeSyncTimer, "AddVecsDistributeSync", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+		buildTimer(vecsDistributeSyncTimer, "SubVecsDistributeSync", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+		buildTimer(vecsDistributeSyncTimer, "MulVecsDistributeSync", FHE_AT);
+	}
+
+  	auto_timer vecsDistributeSyncAutoTimer(vecsDistributeSyncTimer);
+	
+	sync();
+	
+	vecsDistributeSyncAutoTimer.stop();
 
 	vecsAutoTimer.stop();
   return *this;
@@ -175,6 +191,18 @@ DoubleCRT& DoubleCRT::Op(const ZZ &num, Fun fun)
 	
   	auto_timer vecsAutoTimer(vecsTimer);
   	
+  	static FHEtimer *vecsDistributeValuesTimer = 0;
+	
+	if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+		buildTimer(vecsDistributeValuesTimer, "AddVecNumDistributeValues", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+		buildTimer(vecsDistributeValuesTimer, "SubVecNumDistributeValues", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+		buildTimer(vecsDistributeValuesTimer, "MulVecNumDistributeValues", FHE_AT);
+	}
+
+  	auto_timer vecsDistributeValuesAutoTimer(vecsDistributeValuesTimer);
+  	
 	for(long i = s.first(); i <= s.last(); i = s.next(i)) {
 		int operation;
 		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
@@ -186,23 +214,27 @@ DoubleCRT& DoubleCRT::Op(const ZZ &num, Fun fun)
 		}
 		
 		long pi = context.ithPrime(i);
-		
-		static FHEtimer *vecsDistributeValuesTimer = 0;
-	
-		if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
-			buildTimer(vecsDistributeValuesTimer, "AddVecNumDistributeValues", FHE_AT);
-		} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
-			buildTimer(vecsDistributeValuesTimer, "SubVecNumDistributeValues", FHE_AT);
-		} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
-			buildTimer(vecsDistributeValuesTimer, "MulVecNumDistributeValues", FHE_AT);
-		}
-	
-	  	auto_timer vecsDistributeValuesAutoTimer(vecsDistributeValuesTimer);
-		
+
 		DistributeValuesOneVectorOneNum(operation, pi, phim, map[i]._vec__rep.rep, rem(num, pi));
-		
-		vecsDistributeValuesAutoTimer.stop();
 	}
+	
+	vecsDistributeValuesAutoTimer.stop();
+	
+	static FHEtimer *vecsDistributeSyncTimer = 0;
+	
+	if(typeid(fun) == typeid(DoubleCRT::AddFun)) {
+		buildTimer(vecsDistributeSyncTimer, "AddVecNumDistributeSync", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::SubFun)) {
+		buildTimer(vecsDistributeSyncTimer, "SubVecNumDistributeSync", FHE_AT);
+	} else if (typeid(fun) == typeid(DoubleCRT::MulFun)) {
+		buildTimer(vecsDistributeSyncTimer, "MulVecNumDistributeSync", FHE_AT);
+	}
+
+  	auto_timer vecsDistributeSyncAutoTimer(vecsDistributeSyncTimer);
+	
+	sync();
+	
+	vecsDistributeSyncAutoTimer.stop();
 	
 	vecsAutoTimer.stop();
   return *this;
