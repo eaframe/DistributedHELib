@@ -17,7 +17,7 @@ all:
 	make modified
 
 master:	Test_DistributedHE.cpp
-	$(CC) $(LDFLAGS) Test_DistributedHE.cpp $(MASTER_FHE_LIB) -I$(MASTER_SRC) -o Test_DistributedHE_HELib_master $(MASTER_LIBS)
+	$(MPICPP) $(LDFLAGS) Test_DistributedHE.cpp $(MASTER_FHE_LIB) -I$(MASTER_SRC) -o Test_DistributedHE_HELib_master $(MASTER_LIBS)
 
 modified:	Test_DistributedHE.cpp
 	$(MPICPP) $(LDFLAGS) Test_DistributedHE.cpp $(MODIFIED_FHE_LIB) -I$(MODIFIED_SRC) -o Test_DistributedHE_HELib_modified $(MODIFIED_LIBS)

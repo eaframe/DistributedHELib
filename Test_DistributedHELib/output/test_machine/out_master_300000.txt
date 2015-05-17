@@ -1,0 +1,20 @@
+*** Bound N=16484, choosing m=300000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.010444 / 4 = 0.002611   [DoubleCRT.cpp:105]
+  AdditionCircuit: 0.005313 / 1 = 0.005313   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.006701 / 1 = 0.006701   [DoubleCRT.cpp:109]
+
+
+  AddVecs: 0.005176 / 2 = 0.002588   [DoubleCRT.cpp:105]
+  MulVecs: 0.00671 / 1 = 0.00671   [DoubleCRT.cpp:109]
+  SubVecs: 0.005228 / 2 = 0.002614   [DoubleCRT.cpp:107]
+  SubtractionCircuit: 0.005244 / 1 = 0.005244   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.008397 / 4 = 0.00209925   [DoubleCRT.cpp:105]
+  MulVecNum: 0.011396 / 2 = 0.005698   [DoubleCRT.cpp:156]
+  MulVecs: 0.035102 / 6 = 0.00585033   [DoubleCRT.cpp:109]
+  MultiplicationCircuit: 7.28622 / 1 = 7.28622   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.007394 / 4 = 0.0018485   [DoubleCRT.cpp:107]
+

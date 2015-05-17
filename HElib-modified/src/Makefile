@@ -16,7 +16,7 @@
 CC = g++
 MPICC = mpic++
 #
-CFLAGS = -g -O2 -Wfatal-errors -Wshadow -Wall -I/usr/local/include 
+CFLAGS = -g -O2 -Wfatal-errors -Wshadow -Wall -I/usr/local/include -I/home/eaframe/Thesis/ntl-8.1.2/local/include -I/home/eaframe/Thesis/openmpi-1.8.5/local/include
 
 # useful flags:
 #   -std=c++11
@@ -44,7 +44,7 @@ LD = g++
 AR = ar
 ARFLAGS=ruv
 GMP=-lgmp 
-LDLIBS = -L/usr/local/lib -lntl $(GMP) -lm -lmpi
+LDLIBS = -L/usr/local/lib -L/home/eaframe/Thesis/ntl-8.1.2/local/lib -lntl $(GMP) -lm -L/home/eaframe/Thesis/openmpi-1.8.5/local/lib -lmpi
 
 HEADER = EncryptedArray.h FHE.h Ctxt.h CModulus.h FHEContext.h PAlgebra.h DoubleCRT.h NumbTh.h bluestein.h IndexSet.h timing.h IndexMap.h replicate.h hypercube.h matching.h powerful.h permutations.h polyEval.h Distributed.h
 

@@ -16,6 +16,6 @@ void Startup(int argc, char **argv);
 void DistributeValuesTwoVectors(int operation, long ithPrime, long row_length, long *row, long *other_row);
 void DistributeValuesOneVectorOneNum(int operation, long ithPrime, long row_length, long *row, long num);
 void Shutdown();
-void sync();
+void DistributedSync();
 
 #endif

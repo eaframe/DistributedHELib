@@ -108,7 +108,7 @@ void Startup(int argc, char **argv) {
 //	cout << "MASTER HERE, CONTINUING" << endl;
 }
 
-void sync() {
+void DistributedSync() {
 	while(!request_queue.empty()) {
 		MPI::Request request = request_queue.front();
 		request_queue.pop();

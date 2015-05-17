@@ -1,0 +1,1064 @@
+make master
+make[1]: Entering directory `/home/eaframe/Thesis/DistributedHElib/Test_DistributedHELib'
+mpic++ -g -O Test_DistributedHE.cpp ../HElib-master/src/fhe.a -I../../ntl-8.1.2/local/include -I../HElib-master/src -o Test_DistributedHE_HELib_master -L/usr/local/lib/ -L../../ntl-8.1.2/local/lib/ -L../../gmp-6.0.0/local/lib/ -lntl -lgmp
+make[1]: Leaving directory `/home/eaframe/Thesis/DistributedHElib/Test_DistributedHELib'
+make modified
+make[1]: Entering directory `/home/eaframe/Thesis/DistributedHElib/Test_DistributedHELib'
+mpic++ -g -O Test_DistributedHE.cpp ../HElib-modified/src/fhe.a -I../../ntl-8.1.2/local/include -I../HElib-modified/src -o Test_DistributedHE_HELib_modified -L/usr/local/lib/ -L../../ntl-8.1.2/local/lib/ -L../../gmp-6.0.0/local/lib/ -lntl -lgmp
+make[1]: Leaving directory `/home/eaframe/Thesis/DistributedHElib/Test_DistributedHELib'
+Running on chosen m of 1000
+RUNNING MASTER
+*** Bound N=16484, choosing m=1000, phi(m)=400
+nslots: 4
+
+  AddVecs: 2e-05 / 4 = 5e-06   [DoubleCRT.cpp:105]
+  AdditionCircuit: 1.4e-05 / 1 = 1.4e-05   [Test_DistributedHE.cpp:85]
+  MulVecs: 3.3e-05 / 1 = 3.3e-05   [DoubleCRT.cpp:109]
+
+
+  AddVecs: 1e-05 / 2 = 5e-06   [DoubleCRT.cpp:105]
+  MulVecs: 3.3e-05 / 1 = 3.3e-05   [DoubleCRT.cpp:109]
+  SubVecs: 1e-05 / 2 = 5e-06   [DoubleCRT.cpp:107]
+  SubtractionCircuit: 1.4e-05 / 1 = 1.4e-05   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 1.8e-05 / 4 = 4.5e-06   [DoubleCRT.cpp:105]
+  MulVecNum: 5.8e-05 / 2 = 2.9e-05   [DoubleCRT.cpp:156]
+  MulVecs: 0.000178 / 6 = 2.96667e-05   [DoubleCRT.cpp:109]
+  MultiplicationCircuit: 0.004996 / 1 = 0.004996   [Test_DistributedHE.cpp:133]
+  SubVecs: 1.6e-05 / 4 = 4e-06   [DoubleCRT.cpp:107]
+
+RUNNING MODIFIED
+Running modified on 4 nodes
+*** Bound N=16484, choosing m=1000, phi(m)=400
+nslots: 4
+
+  AddVecs: 0.002969 / 4 = 0.00074225   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000817 / 40 = 2.0425e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001071 / 40 = 2.6775e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.002063 / 4 = 0.00051575   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000896 / 4 = 0.000224   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000164 / 40 = 4.1e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.001457 / 1 = 0.001457   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.00074 / 1 = 0.00074   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.000523 / 1 = 0.000523   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000215 / 1 = 0.000215   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.001466 / 2 = 0.000733   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000852 / 40 = 2.13e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001127 / 40 = 2.8175e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.001022 / 2 = 0.000511   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000438 / 2 = 0.000219   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000189 / 40 = 4.725e-06   [Distributed.cpp:156]
+  MulVecs: 0.000803 / 1 = 0.000803   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.000554 / 1 = 0.000554   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000246 / 1 = 0.000246   [DoubleCRT.cpp:122]
+  SubVecs: 0.001539 / 2 = 0.0007695   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.001052 / 2 = 0.000526   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000481 / 2 = 0.0002405   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.001544 / 1 = 0.001544   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.002807 / 4 = 0.00070175   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002075 / 98 = 2.11735e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.002753 / 98 = 2.80918e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.00199 / 4 = 0.0004975   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000807 / 4 = 0.00020175   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000461 / 98 = 4.70408e-06   [Distributed.cpp:156]
+  MulVecNum: 0.001086 / 2 = 0.000543   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000191 / 14 = 1.36429e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000273 / 14 = 1.95e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.000788 / 2 = 0.000394   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000286 / 2 = 0.000143   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 5.1e-05 / 14 = 3.64286e-06   [Distributed.cpp:217]
+  MulVecs: 0.004289 / 6 = 0.000714833   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003066 / 6 = 0.000511   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001209 / 6 = 0.0002015   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 0.012541 / 1 = 0.012541   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.002846 / 4 = 0.0007115   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.002008 / 4 = 0.000502   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000828 / 4 = 0.000207   [DoubleCRT.cpp:120]
+
+Running modified on 8 nodes
+*** Bound N=16484, choosing m=1000, phi(m)=400
+nslots: 4
+
+  AddVecs: 0.003479 / 4 = 0.00086975   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001057 / 40 = 2.6425e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001358 / 40 = 3.395e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.002361 / 4 = 0.00059025   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001109 / 4 = 0.00027725   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000203 / 40 = 5.075e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.001712 / 1 = 0.001712   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.000896 / 1 = 0.000896   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.000605 / 1 = 0.000605   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000287 / 1 = 0.000287   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.001713 / 2 = 0.0008565   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001124 / 40 = 2.81e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001434 / 40 = 3.585e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.001111 / 2 = 0.0005555   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000596 / 2 = 0.000298   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.00021 / 40 = 5.25e-06   [Distributed.cpp:156]
+  MulVecs: 0.000893 / 1 = 0.000893   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.000594 / 1 = 0.000594   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000297 / 1 = 0.000297   [DoubleCRT.cpp:122]
+  SubVecs: 0.001786 / 2 = 0.000893   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.001188 / 2 = 0.000594   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000583 / 2 = 0.0002915   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.001791 / 1 = 0.001791   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.003227 / 4 = 0.00080675   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002665 / 98 = 2.71939e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003429 / 98 = 3.49898e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.002231 / 4 = 0.00055775   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000986 / 4 = 0.0002465   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000517 / 98 = 5.27551e-06   [Distributed.cpp:156]
+  MulVecNum: 0.001278 / 2 = 0.000639   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000292 / 14 = 2.08571e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000399 / 14 = 2.85e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.000863 / 2 = 0.0004315   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000411 / 2 = 0.0002055   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 7.4e-05 / 14 = 5.28571e-06   [Distributed.cpp:217]
+  MulVecs: 0.004833 / 6 = 0.0008055   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003365 / 6 = 0.000560833   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001456 / 6 = 0.000242667   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 0.013504 / 1 = 0.013504   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.003221 / 4 = 0.00080525   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.002134 / 4 = 0.0005335   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001076 / 4 = 0.000269   [DoubleCRT.cpp:120]
+
+Running modified on 16 nodes
+*** Bound N=16484, choosing m=1000, phi(m)=400
+nslots: 4
+
+  AddVecs: 0.003672 / 4 = 0.000918   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001112 / 40 = 2.78e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001444 / 40 = 3.61e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.002471 / 4 = 0.00061775   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001194 / 4 = 0.0002985   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000232 / 40 = 5.8e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.001772 / 1 = 0.001772   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.000879 / 1 = 0.000879   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.000586 / 1 = 0.000586   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.00029 / 1 = 0.00029   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.001781 / 2 = 0.0008905   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001142 / 40 = 2.855e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001499 / 40 = 3.7475e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.001184 / 2 = 0.000592   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000593 / 2 = 0.0002965   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000232 / 40 = 5.8e-06   [Distributed.cpp:156]
+  MulVecs: 0.000964 / 1 = 0.000964   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.000639 / 1 = 0.000639   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000322 / 1 = 0.000322   [DoubleCRT.cpp:122]
+  SubVecs: 0.001844 / 2 = 0.000922   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.001212 / 2 = 0.000606   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000626 / 2 = 0.000313   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.00185 / 1 = 0.00185   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.013399 / 4 = 0.00334975   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002774 / 98 = 2.83061e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003606 / 98 = 3.67959e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.012257 / 4 = 0.00306425   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001132 / 4 = 0.000283   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000564 / 98 = 5.7551e-06   [Distributed.cpp:156]
+  MulVecNum: 0.008683 / 2 = 0.0043415   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000314 / 14 = 2.24286e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000426 / 14 = 3.04286e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.008239 / 2 = 0.0041195   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000438 / 2 = 0.000219   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 7.6e-05 / 14 = 5.42857e-06   [Distributed.cpp:217]
+  MulVecs: 0.005024 / 6 = 0.000837333   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003484 / 6 = 0.000580667   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001529 / 6 = 0.000254833   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 0.024836 / 1 = 0.024836   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.006872 / 4 = 0.001718   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.00582 / 4 = 0.001455   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001036 / 4 = 0.000259   [DoubleCRT.cpp:120]
+
+Running on chosen m of 10000
+RUNNING MASTER
+*** Bound N=16484, choosing m=10000, phi(m)=4000
+nslots: 8
+
+  AddVecs: 0.000192 / 4 = 4.8e-05   [DoubleCRT.cpp:105]
+  AdditionCircuit: 0.000107 / 1 = 0.000107   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.000322 / 1 = 0.000322   [DoubleCRT.cpp:109]
+
+
+  AddVecs: 8.9e-05 / 2 = 4.45e-05   [DoubleCRT.cpp:105]
+  MulVecs: 0.000323 / 1 = 0.000323   [DoubleCRT.cpp:109]
+  SubVecs: 0.000117 / 2 = 5.85e-05   [DoubleCRT.cpp:107]
+  SubtractionCircuit: 0.000125 / 1 = 0.000125   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.000158 / 4 = 3.95e-05   [DoubleCRT.cpp:105]
+  MulVecNum: 0.000569 / 2 = 0.0002845   [DoubleCRT.cpp:156]
+  MulVecs: 0.001703 / 6 = 0.000283833   [DoubleCRT.cpp:109]
+  MultiplicationCircuit: 0.10298 / 1 = 0.10298   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.000291 / 4 = 7.275e-05   [DoubleCRT.cpp:107]
+
+RUNNING MODIFIED
+Running modified on 4 nodes
+*** Bound N=16484, choosing m=10000, phi(m)=4000
+nslots: 8
+
+  AddVecs: 0.014414 / 4 = 0.0036035   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002016 / 40 = 5.04e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.002289 / 40 = 5.7225e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.012548 / 4 = 0.003137   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001855 / 4 = 0.00046375   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000184 / 40 = 4.6e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.007496 / 1 = 0.007496   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.004013 / 1 = 0.004013   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003534 / 1 = 0.003534   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000475 / 1 = 0.000475   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.00749 / 2 = 0.003745   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002171 / 40 = 5.4275e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.002482 / 40 = 6.205e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.006558 / 2 = 0.003279   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000927 / 2 = 0.0004635   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.00021 / 40 = 5.25e-06   [Distributed.cpp:156]
+  MulVecs: 0.003464 / 1 = 0.003464   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003009 / 1 = 0.003009   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000452 / 1 = 0.000452   [DoubleCRT.cpp:122]
+  SubVecs: 0.007469 / 2 = 0.0037345   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.006324 / 2 = 0.003162   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.00114 / 2 = 0.00057   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.007479 / 1 = 0.007479   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.01268 / 4 = 0.00317   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.005421 / 98 = 5.53163e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.006278 / 98 = 6.40612e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.011067 / 4 = 0.00276675   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001601 / 4 = 0.00040025   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000594 / 98 = 6.06122e-06   [Distributed.cpp:156]
+  MulVecNum: 0.004454 / 2 = 0.002227   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000474 / 14 = 3.38571e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000572 / 14 = 4.08571e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.00386 / 2 = 0.00193   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000588 / 2 = 0.000294   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 6.6e-05 / 14 = 4.71429e-06   [Distributed.cpp:217]
+  MulVecs: 0.019786 / 6 = 0.00329767   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.017251 / 6 = 0.00287517   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.002514 / 6 = 0.000419   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 0.13712 / 1 = 0.13712   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.012947 / 4 = 0.00323675   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.010673 / 4 = 0.00266825   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.002265 / 4 = 0.00056625   [DoubleCRT.cpp:120]
+
+Running modified on 8 nodes
+*** Bound N=16484, choosing m=10000, phi(m)=4000
+nslots: 8
+
+  AddVecs: 0.017706 / 4 = 0.0044265   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002785 / 40 = 6.9625e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003121 / 40 = 7.8025e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.015183 / 4 = 0.00379575   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.002515 / 4 = 0.00062875   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000247 / 40 = 6.175e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.009161 / 1 = 0.009161   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.004607 / 1 = 0.004607   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.00396 / 1 = 0.00396   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000644 / 1 = 0.000644   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.008586 / 2 = 0.004293   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002943 / 40 = 7.3575e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003321 / 40 = 8.3025e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.00737 / 2 = 0.003685   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.00121 / 2 = 0.000605   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.00027 / 40 = 6.75e-06   [Distributed.cpp:156]
+  MulVecs: 0.004587 / 1 = 0.004587   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003927 / 1 = 0.003927   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000657 / 1 = 0.000657   [DoubleCRT.cpp:122]
+  SubVecs: 0.009208 / 2 = 0.004604   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.007709 / 2 = 0.0038545   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001493 / 2 = 0.0007465   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.009219 / 1 = 0.009219   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.015981 / 4 = 0.00399525   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.007231 / 98 = 7.37857e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.008263 / 98 = 8.43163e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.013775 / 4 = 0.00344375   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.002196 / 4 = 0.000549   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000755 / 98 = 7.70408e-06   [Distributed.cpp:156]
+  MulVecNum: 0.004984 / 2 = 0.002492   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000599 / 14 = 4.27857e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.00072 / 14 = 5.14286e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.004248 / 2 = 0.002124   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000733 / 2 = 0.0003665   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 8.6e-05 / 14 = 6.14286e-06   [Distributed.cpp:217]
+  MulVecs: 0.024191 / 6 = 0.00403183   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.020937 / 6 = 0.0034895   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.003243 / 6 = 0.0005405   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 0.145359 / 1 = 0.145359   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.016251 / 4 = 0.00406275   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.013319 / 4 = 0.00332975   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.002923 / 4 = 0.00073075   [DoubleCRT.cpp:120]
+
+Running modified on 16 nodes
+*** Bound N=16484, choosing m=10000, phi(m)=4000
+nslots: 8
+
+  AddVecs: 0.029754 / 4 = 0.0074385   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.00319 / 40 = 7.975e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003562 / 40 = 8.905e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.026768 / 4 = 0.006692   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.002967 / 4 = 0.00074175   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000264 / 40 = 6.6e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.00996 / 1 = 0.00996   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.004595 / 1 = 0.004595   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003952 / 1 = 0.003952   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.00064 / 1 = 0.00064   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.023 / 2 = 0.0115   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.003302 / 40 = 8.255e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.00369 / 40 = 9.225e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.021595 / 2 = 0.0107975   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.0014 / 2 = 0.0007   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000272 / 40 = 6.8e-06   [Distributed.cpp:156]
+  MulVecs: 0.004597 / 1 = 0.004597   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.003896 / 1 = 0.003896   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000698 / 1 = 0.000698   [DoubleCRT.cpp:122]
+  SubVecs: 0.009731 / 2 = 0.0048655   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.00809 / 2 = 0.004045   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001635 / 2 = 0.0008175   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.009741 / 1 = 0.009741   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.039905 / 4 = 0.00997625   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.008007 / 98 = 8.17041e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.009055 / 98 = 9.2398e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.037659 / 4 = 0.00941475   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.002235 / 4 = 0.00055875   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000782 / 98 = 7.97959e-06   [Distributed.cpp:156]
+  MulVecNum: 0.007699 / 2 = 0.0038495   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000636 / 14 = 4.54286e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000759 / 14 = 5.42143e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.006919 / 2 = 0.0034595   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000773 / 2 = 0.0003865   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 8.8e-05 / 14 = 6.28571e-06   [Distributed.cpp:217]
+  MulVecs: 0.026988 / 6 = 0.004498   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.023215 / 6 = 0.00386917   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.003759 / 6 = 0.0006265   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 0.162251 / 1 = 0.162251   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.017379 / 4 = 0.00434475   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.0142 / 4 = 0.00355   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.003168 / 4 = 0.000792   [DoubleCRT.cpp:120]
+
+Running on chosen m of 100000
+RUNNING MASTER
+*** Bound N=16484, choosing m=100000, phi(m)=40000
+nslots: 16
+
+  AddVecs: 0.003949 / 4 = 0.00098725   [DoubleCRT.cpp:105]
+  AdditionCircuit: 0.002525 / 1 = 0.002525   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.003349 / 1 = 0.003349   [DoubleCRT.cpp:109]
+
+
+  AddVecs: 0.001489 / 2 = 0.0007445   [DoubleCRT.cpp:105]
+  MulVecs: 0.003349 / 1 = 0.003349   [DoubleCRT.cpp:109]
+  SubVecs: 0.002475 / 2 = 0.0012375   [DoubleCRT.cpp:107]
+  SubtractionCircuit: 0.002491 / 1 = 0.002491   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.002366 / 4 = 0.0005915   [DoubleCRT.cpp:105]
+  MulVecNum: 0.005643 / 2 = 0.0028215   [DoubleCRT.cpp:156]
+  MulVecs: 0.017319 / 6 = 0.0028865   [DoubleCRT.cpp:109]
+  MultiplicationCircuit: 1.15145 / 1 = 1.15145   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.004636 / 4 = 0.001159   [DoubleCRT.cpp:107]
+
+RUNNING MODIFIED
+Running modified on 4 nodes
+*** Bound N=16484, choosing m=100000, phi(m)=40000
+nslots: 16
+
+  AddVecs: 0.195916 / 4 = 0.048979   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000717 / 40 = 1.7925e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001175 / 40 = 2.9375e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.194957 / 4 = 0.0487392   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000949 / 4 = 0.00023725   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000296 / 40 = 7.4e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.089333 / 1 = 0.089333   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.054766 / 1 = 0.054766   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.054495 / 1 = 0.054495   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000267 / 1 = 0.000267   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.083377 / 2 = 0.0416885   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000747 / 40 = 1.8675e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001161 / 40 = 2.9025e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.082953 / 2 = 0.0414765   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000419 / 2 = 0.0002095   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000305 / 40 = 7.625e-06   [Distributed.cpp:156]
+  MulVecs: 0.043493 / 1 = 0.043493   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.043206 / 1 = 0.043206   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000284 / 1 = 0.000284   [DoubleCRT.cpp:122]
+  SubVecs: 0.077712 / 2 = 0.038856   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.077216 / 2 = 0.038608   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000494 / 2 = 0.000247   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.077731 / 1 = 0.077731   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.153416 / 4 = 0.038354   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001746 / 98 = 1.78163e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003097 / 98 = 3.1602e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.152644 / 4 = 0.038161   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000762 / 4 = 0.0001905   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000997 / 98 = 1.01735e-05   [Distributed.cpp:156]
+  MulVecNum: 0.052613 / 2 = 0.0263065   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000288 / 14 = 2.05714e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000519 / 14 = 3.70714e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.052069 / 2 = 0.0260345   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000536 / 2 = 0.000268   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000191 / 14 = 1.36429e-05   [Distributed.cpp:217]
+  MulVecs: 0.21102 / 6 = 0.03517   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.209714 / 6 = 0.0349523   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.00129 / 6 = 0.000215   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 1.55947 / 1 = 1.55947   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.156284 / 4 = 0.039071   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.155111 / 4 = 0.0387777   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001164 / 4 = 0.000291   [DoubleCRT.cpp:120]
+
+Running modified on 8 nodes
+*** Bound N=16484, choosing m=100000, phi(m)=40000
+nslots: 16
+
+  AddVecs: 0.219549 / 4 = 0.0548872   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000851 / 40 = 2.1275e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001357 / 40 = 3.3925e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.218445 / 4 = 0.0546113   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001096 / 4 = 0.000274   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000378 / 40 = 9.45e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.107648 / 1 = 0.107648   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.047763 / 1 = 0.047763   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.04743 / 1 = 0.04743   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.00033 / 1 = 0.00033   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.108357 / 2 = 0.0541785   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000792 / 40 = 1.98e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001391 / 40 = 3.4775e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.107836 / 2 = 0.053918   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000516 / 2 = 0.000258   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000422 / 40 = 1.055e-05   [Distributed.cpp:156]
+  MulVecs: 0.057686 / 1 = 0.057686   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.057356 / 1 = 0.057356   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000327 / 1 = 0.000327   [DoubleCRT.cpp:122]
+  SubVecs: 0.11166 / 2 = 0.05583   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.111051 / 2 = 0.0555255   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000603 / 2 = 0.0003015   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.111679 / 1 = 0.111679   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.193442 / 4 = 0.0483605   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002084 / 98 = 2.12653e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003872 / 98 = 3.95102e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.192511 / 4 = 0.0481277   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000921 / 4 = 0.00023025   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001437 / 98 = 1.46633e-05   [Distributed.cpp:156]
+  MulVecNum: 0.065903 / 2 = 0.0329515   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000272 / 14 = 1.94286e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000581 / 14 = 4.15e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.065298 / 2 = 0.032649   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000598 / 2 = 0.000299   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000267 / 14 = 1.90714e-05   [Distributed.cpp:217]
+  MulVecs: 0.28981 / 6 = 0.0483017   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.288069 / 6 = 0.0480115   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001723 / 6 = 0.000287167   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 1.6664 / 1 = 1.6664   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.194862 / 4 = 0.0487155   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.193493 / 4 = 0.0483732   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001358 / 4 = 0.0003395   [DoubleCRT.cpp:120]
+
+Running modified on 16 nodes
+*** Bound N=16484, choosing m=100000, phi(m)=40000
+nslots: 16
+
+  AddVecs: 0.231777 / 4 = 0.0579443   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000908 / 40 = 2.27e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001474 / 40 = 3.685e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.230598 / 4 = 0.0576495   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001169 / 4 = 0.00029225   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000435 / 40 = 1.0875e-05   [Distributed.cpp:156]
+  AdditionCircuit: 0.118738 / 1 = 0.118738   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.064882 / 1 = 0.064882   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.064533 / 1 = 0.064533   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000345 / 1 = 0.000345   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.121986 / 2 = 0.060993   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000934 / 40 = 2.335e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001466 / 40 = 3.665e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.121417 / 2 = 0.0607085   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000563 / 2 = 0.0002815   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000415 / 40 = 1.0375e-05   [Distributed.cpp:156]
+  MulVecs: 0.057729 / 1 = 0.057729   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.057394 / 1 = 0.057394   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000332 / 1 = 0.000332   [DoubleCRT.cpp:122]
+  SubVecs: 0.119413 / 2 = 0.0597065   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.118753 / 2 = 0.0593765   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000654 / 2 = 0.000327   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.119431 / 1 = 0.119431   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.225647 / 4 = 0.0564117   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002359 / 98 = 2.40714e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.004083 / 98 = 4.16633e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.224573 / 4 = 0.0561432   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001063 / 4 = 0.00026575   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001404 / 98 = 1.43265e-05   [Distributed.cpp:156]
+  MulVecNum: 0.068836 / 2 = 0.034418   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000302 / 14 = 2.15714e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000576 / 14 = 4.11429e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.06819 / 2 = 0.034095   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000641 / 2 = 0.0003205   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000227 / 14 = 1.62143e-05   [Distributed.cpp:217]
+  MulVecs: 0.302138 / 6 = 0.0503563   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.300393 / 6 = 0.0500655   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001712 / 6 = 0.000285333   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 1.71651 / 1 = 1.71651   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.21978 / 4 = 0.054945   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.218366 / 4 = 0.0545915   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001405 / 4 = 0.00035125   [DoubleCRT.cpp:120]
+
+Running on chosen m of 200000
+RUNNING MASTER
+*** Bound N=16484, choosing m=200000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.010352 / 4 = 0.002588   [DoubleCRT.cpp:105]
+  AdditionCircuit: 0.005347 / 1 = 0.005347   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.006709 / 1 = 0.006709   [DoubleCRT.cpp:109]
+
+
+  AddVecs: 0.005113 / 2 = 0.0025565   [DoubleCRT.cpp:105]
+  MulVecs: 0.006702 / 1 = 0.006702   [DoubleCRT.cpp:109]
+  SubVecs: 0.005291 / 2 = 0.0026455   [DoubleCRT.cpp:107]
+  SubtractionCircuit: 0.005308 / 1 = 0.005308   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.008197 / 4 = 0.00204925   [DoubleCRT.cpp:105]
+  MulVecNum: 0.011391 / 2 = 0.0056955   [DoubleCRT.cpp:156]
+  MulVecs: 0.035068 / 6 = 0.00584467   [DoubleCRT.cpp:109]
+  MultiplicationCircuit: 2.64439 / 1 = 2.64439   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.008323 / 4 = 0.00208075   [DoubleCRT.cpp:107]
+
+RUNNING MODIFIED
+Running modified on 4 nodes
+*** Bound N=16484, choosing m=200000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.340117 / 4 = 0.0850293   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000735 / 40 = 1.8375e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001271 / 40 = 3.1775e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.339107 / 4 = 0.0847767   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001 / 4 = 0.00025   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000397 / 40 = 9.925e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.178333 / 1 = 0.178333   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.110521 / 1 = 0.110521   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.110201 / 1 = 0.110201   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000316 / 1 = 0.000316   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.190431 / 2 = 0.0952155   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000777 / 40 = 1.9425e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001253 / 40 = 3.1325e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.189942 / 2 = 0.094971   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000484 / 2 = 0.000242   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000367 / 40 = 9.175e-06   [Distributed.cpp:156]
+  MulVecs: 0.081098 / 1 = 0.081098   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.080803 / 1 = 0.080803   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000293 / 1 = 0.000293   [DoubleCRT.cpp:122]
+  SubVecs: 0.16657 / 2 = 0.083285   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.166013 / 2 = 0.0830065   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000552 / 2 = 0.000276   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.166589 / 1 = 0.166589   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.28656 / 4 = 0.07164   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001805 / 98 = 1.84184e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003135 / 98 = 3.19898e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.285764 / 4 = 0.071441   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000788 / 4 = 0.000197   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000982 / 98 = 1.00204e-05   [Distributed.cpp:156]
+  MulVecNum: 0.097596 / 2 = 0.048798   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000301 / 14 = 2.15e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000503 / 14 = 3.59286e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.097066 / 2 = 0.048533   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000524 / 2 = 0.000262   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000157 / 14 = 1.12143e-05   [Distributed.cpp:217]
+  MulVecs: 0.465548 / 6 = 0.0775913   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.463965 / 6 = 0.0773275   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001551 / 6 = 0.0002585   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 3.44417 / 1 = 3.44417   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.291138 / 4 = 0.0727845   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.290193 / 4 = 0.0725482   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000936 / 4 = 0.000234   [DoubleCRT.cpp:120]
+
+Running modified on 8 nodes
+*** Bound N=16484, choosing m=200000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.449493 / 4 = 0.112373   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000843 / 40 = 2.1075e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001454 / 40 = 3.635e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.448292 / 4 = 0.112073   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001191 / 4 = 0.00029775   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000429 / 40 = 1.0725e-05   [Distributed.cpp:156]
+  AdditionCircuit: 0.222759 / 1 = 0.222759   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.112128 / 1 = 0.112128   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.111789 / 1 = 0.111789   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000336 / 1 = 0.000336   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.223366 / 2 = 0.111683   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000932 / 40 = 2.33e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001454 / 40 = 3.635e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.222779 / 2 = 0.11139   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000581 / 2 = 0.0002905   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000389 / 40 = 9.725e-06   [Distributed.cpp:156]
+  MulVecs: 0.115281 / 1 = 0.115281   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.114936 / 1 = 0.114936   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000343 / 1 = 0.000343   [DoubleCRT.cpp:122]
+  SubVecs: 0.211233 / 2 = 0.105617   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.210638 / 2 = 0.105319   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.00059 / 2 = 0.000295   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.21125 / 1 = 0.21125   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.389758 / 4 = 0.0974395   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002272 / 98 = 2.31837e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003925 / 98 = 4.0051e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.388759 / 4 = 0.0971898   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.00099 / 4 = 0.0002475   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001337 / 98 = 1.36429e-05   [Distributed.cpp:156]
+  MulVecNum: 0.131641 / 2 = 0.0658205   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000354 / 14 = 2.52857e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000595 / 14 = 4.25e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.131024 / 2 = 0.065512   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000609 / 2 = 0.0003045   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000188 / 14 = 1.34286e-05   [Distributed.cpp:217]
+  MulVecs: 0.587895 / 6 = 0.0979825   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.586032 / 6 = 0.097672   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001846 / 6 = 0.000307667   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 3.68865 / 1 = 3.68865   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.389047 / 4 = 0.0972617   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.387825 / 4 = 0.0969562   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001214 / 4 = 0.0003035   [DoubleCRT.cpp:120]
+
+Running modified on 16 nodes
+*** Bound N=16484, choosing m=200000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.466479 / 4 = 0.11662   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000979 / 40 = 2.4475e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001546 / 40 = 3.865e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.465234 / 4 = 0.116308   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001233 / 4 = 0.00030825   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000455 / 40 = 1.1375e-05   [Distributed.cpp:156]
+  AdditionCircuit: 0.239149 / 1 = 0.239149   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.126057 / 1 = 0.126057   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.125698 / 1 = 0.125698   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000356 / 1 = 0.000356   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.257549 / 2 = 0.128774   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000832 / 40 = 2.08e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001574 / 40 = 3.935e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.256906 / 2 = 0.128453   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000637 / 2 = 0.0003185   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000597 / 40 = 1.4925e-05   [Distributed.cpp:156]
+  MulVecs: 0.113907 / 1 = 0.113907   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.113561 / 1 = 0.113561   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000343 / 1 = 0.000343   [DoubleCRT.cpp:122]
+  SubVecs: 0.239817 / 2 = 0.119909   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.239173 / 2 = 0.119586   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000638 / 2 = 0.000319   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.239836 / 1 = 0.239836   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.441576 / 4 = 0.110394   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002428 / 98 = 2.47755e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.004081 / 98 = 4.16429e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.440494 / 4 = 0.110123   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001071 / 4 = 0.00026775   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001354 / 98 = 1.38163e-05   [Distributed.cpp:156]
+  MulVecNum: 0.141486 / 2 = 0.070743   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000331 / 14 = 2.36429e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.00061 / 14 = 4.35714e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.140852 / 2 = 0.070426   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000627 / 2 = 0.0003135   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000184 / 14 = 1.31429e-05   [Distributed.cpp:217]
+  MulVecs: 0.615293 / 6 = 0.102549   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.613386 / 6 = 0.102231   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001878 / 6 = 0.000313   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 3.81122 / 1 = 3.81122   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.423619 / 4 = 0.105905   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.422355 / 4 = 0.105589   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001253 / 4 = 0.00031325   [DoubleCRT.cpp:120]
+
+Running on chosen m of 300000
+RUNNING MASTER
+*** Bound N=16484, choosing m=300000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.010444 / 4 = 0.002611   [DoubleCRT.cpp:105]
+  AdditionCircuit: 0.005313 / 1 = 0.005313   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.006701 / 1 = 0.006701   [DoubleCRT.cpp:109]
+
+
+  AddVecs: 0.005176 / 2 = 0.002588   [DoubleCRT.cpp:105]
+  MulVecs: 0.00671 / 1 = 0.00671   [DoubleCRT.cpp:109]
+  SubVecs: 0.005228 / 2 = 0.002614   [DoubleCRT.cpp:107]
+  SubtractionCircuit: 0.005244 / 1 = 0.005244   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.008397 / 4 = 0.00209925   [DoubleCRT.cpp:105]
+  MulVecNum: 0.011396 / 2 = 0.005698   [DoubleCRT.cpp:156]
+  MulVecs: 0.035102 / 6 = 0.00585033   [DoubleCRT.cpp:109]
+  MultiplicationCircuit: 7.28622 / 1 = 7.28622   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.007394 / 4 = 0.0018485   [DoubleCRT.cpp:107]
+
+RUNNING MODIFIED
+Running modified on 4 nodes
+*** Bound N=16484, choosing m=300000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.321915 / 4 = 0.0804788   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000745 / 40 = 1.8625e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001203 / 40 = 3.0075e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.320929 / 4 = 0.0802323   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000975 / 4 = 0.00024375   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000348 / 40 = 8.7e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.155013 / 1 = 0.155013   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.07874 / 1 = 0.07874   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.078451 / 1 = 0.078451   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000285 / 1 = 0.000285   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.159264 / 2 = 0.079632   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000818 / 40 = 2.045e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001324 / 40 = 3.31e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.1588 / 2 = 0.0794   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000458 / 2 = 0.000229   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000392 / 40 = 9.8e-06   [Distributed.cpp:156]
+  MulVecs: 0.093357 / 1 = 0.093357   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.093048 / 1 = 0.093048   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000306 / 1 = 0.000306   [DoubleCRT.cpp:122]
+  SubVecs: 0.164665 / 2 = 0.0823325   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.164061 / 2 = 0.0820305   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000599 / 2 = 0.0002995   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.164683 / 1 = 0.164683   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.289364 / 4 = 0.072341   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001957 / 98 = 1.99694e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003225 / 98 = 3.29082e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.288516 / 4 = 0.072129   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000837 / 4 = 0.00020925   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000975 / 98 = 9.94898e-06   [Distributed.cpp:156]
+  MulVecNum: 0.083999 / 2 = 0.0419995   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000202 / 14 = 1.44286e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000392 / 14 = 2.8e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.083583 / 2 = 0.0417915   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000408 / 2 = 0.000204   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000154 / 14 = 1.1e-05   [Distributed.cpp:217]
+  MulVecs: 0.466274 / 6 = 0.0777123   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.464658 / 6 = 0.077443   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001601 / 6 = 0.000266833   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 8.3504 / 1 = 8.3504   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.309014 / 4 = 0.0772535   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.308055 / 4 = 0.0770138   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000948 / 4 = 0.000237   [DoubleCRT.cpp:120]
+
+Running modified on 8 nodes
+*** Bound N=16484, choosing m=300000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.449946 / 4 = 0.112487   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000857 / 40 = 2.1425e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001469 / 40 = 3.6725e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.44877 / 4 = 0.112193   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001165 / 4 = 0.00029125   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000477 / 40 = 1.1925e-05   [Distributed.cpp:156]
+  AdditionCircuit: 0.226636 / 1 = 0.226636   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.11417 / 1 = 0.11417   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.113815 / 1 = 0.113815   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000351 / 1 = 0.000351   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.223999 / 2 = 0.112   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000882 / 40 = 2.205e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001426 / 40 = 3.565e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.223432 / 2 = 0.111716   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000564 / 2 = 0.000282   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.00042 / 40 = 1.05e-05   [Distributed.cpp:156]
+  MulVecs: 0.111551 / 1 = 0.111551   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.111204 / 1 = 0.111204   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000344 / 1 = 0.000344   [DoubleCRT.cpp:122]
+  SubVecs: 0.213876 / 2 = 0.106938   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.213281 / 2 = 0.10664   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000591 / 2 = 0.0002955   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.213894 / 1 = 0.213894   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.390445 / 4 = 0.0976112   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002295 / 98 = 2.34184e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003822 / 98 = 3.9e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.389427 / 4 = 0.0973568   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001008 / 4 = 0.000252   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001214 / 98 = 1.23878e-05   [Distributed.cpp:156]
+  MulVecNum: 0.131502 / 2 = 0.065751   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000368 / 14 = 2.62857e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000596 / 14 = 4.25714e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.130864 / 2 = 0.065432   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.00063 / 2 = 0.000315   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000183 / 14 = 1.30714e-05   [Distributed.cpp:217]
+  MulVecs: 0.588264 / 6 = 0.098044   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.58646 / 6 = 0.0977433   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001772 / 6 = 0.000295333   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 8.58868 / 1 = 8.58868   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.390151 / 4 = 0.0975378   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.388964 / 4 = 0.097241   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001179 / 4 = 0.00029475   [DoubleCRT.cpp:120]
+
+Running modified on 16 nodes
+*** Bound N=16484, choosing m=300000, phi(m)=80000
+nslots: 32
+
+  AddVecs: 0.460914 / 4 = 0.115228   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000917 / 40 = 2.2925e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001722 / 40 = 4.305e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.459498 / 4 = 0.114875   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001406 / 4 = 0.0003515   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000659 / 40 = 1.6475e-05   [Distributed.cpp:156]
+  AdditionCircuit: 0.239013 / 1 = 0.239013   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.135224 / 1 = 0.135224   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.134858 / 1 = 0.134858   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000362 / 1 = 0.000362   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.260096 / 2 = 0.130048   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000883 / 40 = 2.2075e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001543 / 40 = 3.8575e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.259477 / 2 = 0.129739   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000616 / 2 = 0.000308   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000528 / 40 = 1.32e-05   [Distributed.cpp:156]
+  MulVecs: 0.113998 / 1 = 0.113998   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.11364 / 1 = 0.11364   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000357 / 1 = 0.000357   [DoubleCRT.cpp:122]
+  SubVecs: 0.236344 / 2 = 0.118172   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.235686 / 2 = 0.117843   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000654 / 2 = 0.000327   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.236364 / 1 = 0.236364   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.424891 / 4 = 0.106223   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002401 / 98 = 2.45e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.004126 / 98 = 4.2102e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.423811 / 4 = 0.105953   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001069 / 4 = 0.00026725   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001418 / 98 = 1.44694e-05   [Distributed.cpp:156]
+  MulVecNum: 0.141951 / 2 = 0.0709755   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000353 / 14 = 2.52143e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000584 / 14 = 4.17143e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.141302 / 2 = 0.070651   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000641 / 2 = 0.0003205   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000189 / 14 = 1.35e-05   [Distributed.cpp:217]
+  MulVecs: 0.632299 / 6 = 0.105383   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.630383 / 6 = 0.105064   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001894 / 6 = 0.000315667   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 8.66378 / 1 = 8.66378   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.417861 / 4 = 0.104465   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.416585 / 4 = 0.104146   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001264 / 4 = 0.000316   [DoubleCRT.cpp:120]
+
+Running on chosen m of 400000
+RUNNING MASTER
+*** Bound N=16484, choosing m=400000, phi(m)=160000
+nslots: 64
+
+  AddVecs: 0.021829 / 4 = 0.00545725   [DoubleCRT.cpp:105]
+  AdditionCircuit: 0.010479 / 1 = 0.010479   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.013492 / 1 = 0.013492   [DoubleCRT.cpp:109]
+
+
+  AddVecs: 0.010863 / 2 = 0.0054315   [DoubleCRT.cpp:105]
+  MulVecs: 0.013384 / 1 = 0.013384   [DoubleCRT.cpp:109]
+  SubVecs: 0.010782 / 2 = 0.005391   [DoubleCRT.cpp:107]
+  SubtractionCircuit: 0.0108 / 1 = 0.0108   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.019054 / 4 = 0.0047635   [DoubleCRT.cpp:105]
+  MulVecNum: 0.023074 / 2 = 0.011537   [DoubleCRT.cpp:156]
+  MulVecs: 0.071006 / 6 = 0.0118343   [DoubleCRT.cpp:109]
+  MultiplicationCircuit: 12.0243 / 1 = 12.0243   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.016337 / 4 = 0.00408425   [DoubleCRT.cpp:107]
+
+RUNNING MODIFIED
+Running modified on 4 nodes
+*** Bound N=16484, choosing m=400000, phi(m)=160000
+nslots: 64
+
+  AddVecs: 0.705549 / 4 = 0.176387   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.00079 / 40 = 1.975e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.00135 / 40 = 3.375e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.70445 / 4 = 0.176113   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001079 / 4 = 0.00026975   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000373 / 40 = 9.325e-06   [Distributed.cpp:156]
+  AdditionCircuit: 0.345464 / 1 = 0.345464   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.169773 / 1 = 0.169773   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.16946 / 1 = 0.16946   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000308 / 1 = 0.000308   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.358256 / 2 = 0.179128   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000799 / 40 = 1.9975e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001303 / 40 = 3.2575e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.357674 / 2 = 0.178837   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000576 / 2 = 0.000288   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000383 / 40 = 9.575e-06   [Distributed.cpp:156]
+  MulVecs: 0.165174 / 1 = 0.165174   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.164867 / 1 = 0.164867   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000304 / 1 = 0.000304   [DoubleCRT.cpp:122]
+  SubVecs: 0.320231 / 2 = 0.160115   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.319758 / 2 = 0.159879   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000468 / 2 = 0.000234   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.320251 / 1 = 0.320251   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.609929 / 4 = 0.152482   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.001908 / 98 = 1.94694e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.003353 / 98 = 3.42143e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.609046 / 4 = 0.152261   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000872 / 4 = 0.000218   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001173 / 98 = 1.19694e-05   [Distributed.cpp:156]
+  MulVecNum: 0.229536 / 2 = 0.114768   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000335 / 14 = 2.39286e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.00055 / 14 = 3.92857e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.228962 / 2 = 0.114481   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000565 / 2 = 0.0002825   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000167 / 14 = 1.19286e-05   [Distributed.cpp:217]
+  MulVecs: 0.888941 / 6 = 0.148157   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.887306 / 6 = 0.147884   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.00162 / 6 = 0.00027   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 10.0918 / 1 = 10.0918   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.589454 / 4 = 0.147364   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.588429 / 4 = 0.147107   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000997 / 4 = 0.00024925   [DoubleCRT.cpp:120]
+
+Running modified on 8 nodes
+*** Bound N=16484, choosing m=400000, phi(m)=160000
+nslots: 64
+
+  AddVecs: 0.874465 / 4 = 0.218616   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000937 / 40 = 2.3425e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001524 / 40 = 3.81e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.873225 / 4 = 0.218306   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001222 / 4 = 0.0003055   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000431 / 40 = 1.0775e-05   [Distributed.cpp:156]
+  AdditionCircuit: 0.454022 / 1 = 0.454022   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.224068 / 1 = 0.224068   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.223721 / 1 = 0.223721   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000343 / 1 = 0.000343   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.41908 / 2 = 0.20954   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000946 / 40 = 2.365e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001512 / 40 = 3.78e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.41846 / 2 = 0.20923   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000616 / 2 = 0.000308   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000442 / 40 = 1.105e-05   [Distributed.cpp:156]
+  MulVecs: 0.246255 / 1 = 0.246255   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.245911 / 1 = 0.245911   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000341 / 1 = 0.000341   [DoubleCRT.cpp:122]
+  SubVecs: 0.455986 / 2 = 0.227993   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.455365 / 2 = 0.227683   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000617 / 2 = 0.0003085   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.456006 / 1 = 0.456006   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.78371 / 4 = 0.195928   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.00234 / 98 = 2.38776e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.004139 / 98 = 4.22347e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.782616 / 4 = 0.195654   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001085 / 4 = 0.00027125   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001498 / 98 = 1.52857e-05   [Distributed.cpp:156]
+  MulVecNum: 0.266016 / 2 = 0.133008   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000313 / 14 = 2.23571e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000636 / 14 = 4.54286e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.265353 / 2 = 0.132677   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000654 / 2 = 0.000327   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000269 / 14 = 1.92143e-05   [Distributed.cpp:217]
+  MulVecs: 1.17051 / 6 = 0.195085   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 1.16858 / 6 = 0.194763   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.001919 / 6 = 0.000319833   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 11.3639 / 1 = 11.3639   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.777256 / 4 = 0.194314   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.775982 / 4 = 0.193995   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.001264 / 4 = 0.000316   [DoubleCRT.cpp:120]
+
+Running modified on 16 nodes
+*** Bound N=16484, choosing m=400000, phi(m)=160000
+nslots: 64
+
+  AddVecs: 0.926351 / 4 = 0.231588   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000915 / 40 = 2.2875e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.00162 / 40 = 4.05e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.925045 / 4 = 0.231261   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001294 / 4 = 0.0003235   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000568 / 40 = 1.42e-05   [Distributed.cpp:156]
+  AdditionCircuit: 0.491135 / 1 = 0.491135   [Test_DistributedHE.cpp:85]
+  MulVecs: 0.262172 / 1 = 0.262172   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.261776 / 1 = 0.261776   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000393 / 1 = 0.000393   [DoubleCRT.cpp:122]
+
+
+  AddVecs: 0.512592 / 2 = 0.256296   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.000983 / 40 = 2.4575e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.001694 / 40 = 4.235e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.51188 / 2 = 0.25594   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.000707 / 2 = 0.0003535   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.000556 / 40 = 1.39e-05   [Distributed.cpp:156]
+  MulVecs: 0.228772 / 1 = 0.228772   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 0.228429 / 1 = 0.228429   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.000341 / 1 = 0.000341   [DoubleCRT.cpp:122]
+  SubVecs: 0.474363 / 2 = 0.237181   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.47367 / 2 = 0.236835   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.000689 / 2 = 0.0003445   [DoubleCRT.cpp:120]
+  SubtractionCircuit: 0.474385 / 1 = 0.474385   [Test_DistributedHE.cpp:109]
+
+
+  AddVecs: 0.813209 / 4 = 0.203302   [DoubleCRT.cpp:106]
+  AddVecsDistributeData: 0.002348 / 98 = 2.39592e-05   [Distributed.cpp:175]
+  AddVecsDistributeSingleValues: 0.004259 / 98 = 4.34592e-05   [Distributed.cpp:144]
+  AddVecsDistributeSync: 0.812054 / 4 = 0.203014   [DoubleCRT.cpp:145]
+  AddVecsDistributeValues: 0.001147 / 4 = 0.00028675   [DoubleCRT.cpp:118]
+  AddVecsDistributeWork: 0.001601 / 98 = 1.63367e-05   [Distributed.cpp:156]
+  MulVecNum: 0.275186 / 2 = 0.137593   [DoubleCRT.cpp:189]
+  MulVecNumDistributeData: 0.000319 / 14 = 2.27857e-05   [Distributed.cpp:236]
+  MulVecNumDistributeSingleValues: 0.000634 / 14 = 4.52857e-05   [Distributed.cpp:205]
+  MulVecNumDistributeSync: 0.274525 / 2 = 0.137263   [DoubleCRT.cpp:230]
+  MulVecNumDistributeValues: 0.000653 / 2 = 0.0003265   [DoubleCRT.cpp:201]
+  MulVecNumDistributeWork: 0.000199 / 14 = 1.42143e-05   [Distributed.cpp:217]
+  MulVecs: 1.27578 / 6 = 0.212631   [DoubleCRT.cpp:110]
+  MulVecsDistributeSync: 1.27377 / 6 = 0.212295   [DoubleCRT.cpp:149]
+  MulVecsDistributeValues: 0.002003 / 6 = 0.000333833   [DoubleCRT.cpp:122]
+  MultiplicationCircuit: 11.3484 / 1 = 11.3484   [Test_DistributedHE.cpp:133]
+  SubVecs: 0.851633 / 4 = 0.212908   [DoubleCRT.cpp:108]
+  SubVecsDistributeSync: 0.850343 / 4 = 0.212586   [DoubleCRT.cpp:147]
+  SubVecsDistributeValues: 0.00128 / 4 = 0.00032   [DoubleCRT.cpp:120]
+

@@ -151,7 +151,7 @@ DoubleCRT& DoubleCRT::Op(const DoubleCRT &other, Fun fun,
 
   	auto_timer vecsDistributeSyncAutoTimer(vecsDistributeSyncTimer);
 	
-	sync();
+	DistributedSync();
 	
 	vecsDistributeSyncAutoTimer.stop();
 
@@ -232,7 +232,7 @@ DoubleCRT& DoubleCRT::Op(const ZZ &num, Fun fun)
 
   	auto_timer vecsDistributeSyncAutoTimer(vecsDistributeSyncTimer);
 	
-	sync();
+	DistributedSync();
 	
 	vecsDistributeSyncAutoTimer.stop();
 	
